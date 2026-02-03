@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RideTogether | Pooling</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>RideTogether</h1>
+    <p>Car & Bike Pooling Made Simple</p>
+
+    <nav>
+        <button class="tab active" onclick="switchTab('car', this)">🚗 Car Pool</button>
+        <button class="tab" onclick="switchTab('bike', this)">🏍 Bike Pool</button>
+    </nav>
+</header>
+
+<main>
+
+    <!-- CAR TAB -->
+    <section id="car" class="pool-section active">
+        <div class="grid">
+
+            <!-- SEARCH CAR -->
+            <div class="card">
+                <h2>Search a Car Ride</h2>
+                <form onsubmit="searchRide(event, 'car')">
+                    <label>From</label>
+                    <select required>
+                        <option>Delhi</option>
+                        <option>Mumbai</option>
+                        <option>Bengaluru</option>
+                        <option>Hyderabad</option>
+                        <option>Pune</option>
+                    </select>
+
+                    <label>To</label>
+                    <select required>
+                        <option>Delhi</option>
+                        <option>Mumbai</option>
+                        <option>Bengaluru</option>
+                        <option>Hyderabad</option>
+                        <option>Pune</option>
+                    </select>
+
+                    <label>Date</label>
+                    <input type="date" required>
+
+                    <label>Seats</label>
+                    <input type="number" min="1" max="4" required>
+
+                    <button type="submit">Search Car</button>
+                </form>
+            </div>
+
+            <!-- POST CAR -->
+            <div class="card">
+                <h2>Post a Car Ride</h2>
+                <form onsubmit="postRide(event, 'car')">
+                    <label>From</label>
+                    <select required>
+                        <option>Delhi</option>
+                        <option>Mumbai</option>
+                        <option>Bengaluru</option>
+                        <option>Hyderabad</option>
+                        <option>Pune</option>
+                    </select>
+
+                    <label>To</label>
+                    <select required>
+                        <option>Delhi</option>
+                        <option>Mumbai</option>
+                        <option>Bengaluru</option>
+                        <option>Hyderabad</option>
+                        <option>Pune</option>
+                    </select>
+
+                    <label>Date</label>
+                    <input type="date" required>
+
+                    <label>Car Type</label>
+                    <select required>
+                        <option>Sedan</option>
+                        <option>SUV</option>
+                        <option>Hatchback</option>
+                    </select>
+
+                    <label>Seats Available</label>
+                    <input type="number" min="1" max="6" required>
+
+                    <button type="submit">Post Car Ride</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BIKE TAB -->
+<section id="bike" class="pool-section">
+    <div class="grid">
+
+        <!-- SEARCH BIKE (INTRA-CITY) -->
+        <div class="card">
+            <h2>Search a Bike Ride</h2>
+            <p style="color:#5f6368; margin-bottom:15px;">
+                Available within the same city only
+            </p>
+
+            <form onsubmit="searchBikeRide(event)">
+                <label>City</label>
+                <select required>
+                    <option>Delhi</option>
+                    <option>Mumbai</option>
+                    <option>Bengaluru</option>
+                    <option>Hyderabad</option>
+                    <option>Pune</option>
+                </select>
+
+                <label>From Location</label>
+                <input type="text" placeholder="Area / Landmark" required>
+
+                <label>To Location</label>
+                <input type="text" placeholder="Area / Landmark" required>
+
+                <label>Date</label>
+                <input type="date" required>
+
+                <button type="submit">Search Bike</button>
+            </form>
+        </div>
+
+        <!-- POST BIKE (INTRA-CITY) -->
+        <div class="card">
+            <h2>Post a Bike Ride</h2>
+            <p style="color:#5f6368; margin-bottom:15px;">
+                Share rides within the same city
+            </p>
+
+            <form onsubmit="postBikeRide(event)">
+                <label>City</label>
+                <select required>
+                    <option>Delhi</option>
+                    <option>Mumbai</option>
+                    <option>Bengaluru</option>
+                    <option>Hyderabad</option>
+                    <option>Pune</option>
+                </select>
+
+                <label>From Location</label>
+                <input type="text" placeholder="Area / Landmark" required>
+
+                <label>To Location</label>
+                <input type="text" placeholder="Area / Landmark" required>
+
+                <label>Date</label>
+                <input type="date" required>
+
+                <button type="submit">Post Bike Ride</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

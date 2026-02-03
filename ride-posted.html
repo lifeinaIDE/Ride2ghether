@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ride Posted | RideTogether</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Ride Posted Successfully</h1>
+    <p>Your ride is now live</p>
+</header>
+
+<main>
+    <div class="card" id="rideSummary"></div>
+</main>
+
+<script>
+const ride = JSON.parse(localStorage.getItem("postedRide"));
+const summary = document.getElementById("rideSummary");
+
+if (!ride) {
+    summary.innerHTML = "<p>No ride data found.</p>";
+} else {
+    summary.innerHTML = `
+        <h2>${ride.type === "car" ? "🚗 Car Ride" : "🏍 Bike Ride"}</h2>
+        <p><strong>From:</strong> ${ride.from}</p>
+        <p><strong>To:</strong> ${ride.to}</p>
+        <p><strong>Date:</strong> ${ride.date}</p>
+        <p><strong>Vehicle:</strong> ${ride.vehicle}</p>
+        <p><strong>Seats:</strong> ${ride.seats}</p>
+        <button onclick="goHome()">Go to Home</button>
+    `;
+}
+
+function goHome() {
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

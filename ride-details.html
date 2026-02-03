@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ride Details | RideTogether</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Ride Details</h1>
+    <p>Confirm before booking</p>
+</header>
+
+<main>
+    <div class="card" id="detailsCard"></div>
+</main>
+
+<script>
+const ride = JSON.parse(localStorage.getItem("selectedRide"));
+const card = document.getElementById("detailsCard");
+
+if (!ride) {
+    card.innerHTML = "<p>No ride selected.</p>";
+} else {
+    card.innerHTML = `
+        <h2>${ride.type === "car" ? "🚗 Car Ride" : "🏍 Bike Ride"}</h2>
+        <p><strong>From:</strong> ${ride.from}</p>
+        <p><strong>To:</strong> ${ride.to}</p>
+        <p><strong>Date:</strong> ${ride.date}</p>
+        <p><strong>Vehicle:</strong> ${ride.vehicle}</p>
+        <p><strong>Seats Available:</strong> ${ride.seats}</p>
+        <button onclick="bookRide()">Request Ride</button>
+    `;
+}
+
+function bookRide() {
+    alert("Ride request sent to driver (demo)");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RideTogether | Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --primary: #1a73e8;
+    --secondary: #34a853;
+    --dark: #202124;
+    --gray: #5f6368;
+    --light: #f8f9fa;
+    --border: #dadce0;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LOGIN CONTAINER */
+.login-container {
+    background: white;
+    width: 400px;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+/* HEADER */
+.login-container h1 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 6px;
+}
+
+.login-container p {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 25px;
+}
+
+/* FORM */
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--dark);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* BUTTONS */
+button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-btn {
+    background: var(--primary);
+    color: white;
+    margin-bottom: 15px;
+}
+
+.login-btn:hover {
+    background: #1557b0;
+}
+
+/* GOOGLE BUTTON */
+.google-btn {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.google-btn img {
+    width: 18px;
+}
+
+.google-btn:hover {
+    background: #f1f3f4;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: var(--gray);
+}
+
+.footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <h1>RideTogether</h1>
+    <p>Sign in to continue</p>
+
+    <form onsubmit="login(event)">
+        <label>Email or Username</label>
+        <input type="text" required>
+
+        <label>Password</label>
+        <input type="password" required>
+
+        <button class="login-btn" type="submit">Sign In</button>
+    </form>
+
+    <button class="google-btn" onclick="googleLogin()">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+        Sign in with Google
+    </button>
+
+    <div class="footer">
+        Don’t have an account?
+        <a href="#">Sign up</a>
+    </div>
+</div>
+
+<script>
+function login(e) {
+    e.preventDefault();
+
+    // Demo authentication
+    localStorage.setItem("isLoggedIn", "true");
+
+    // Default role (can be changed later)
+    if (!localStorage.getItem("role")) {
+        localStorage.setItem("role", "passenger");
+    }
+
+    window.location.href = "index.html";
+}
+
+function googleLogin() {
+    // Demo Google login
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("role", "passenger");
+
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

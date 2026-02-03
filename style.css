@@ -1,0 +1,108 @@
+:root {
+    --primary: #1a73e8;
+    --secondary: #34a853;
+    --dark: #202124;
+    --light: #f8f9fa;
+    --gray: #5f6368;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background: var(--light);
+    color: var(--dark);
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+nav button {
+    padding: 10px 22px;
+    border-radius: 25px;
+    border: none;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: 600;
+    background: white;
+    color: var(--primary);
+}
+
+nav button.active {
+    background: var(--dark);
+    color: white;
+}
+
+/* MAIN */
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.pool-section {
+    display: none;
+}
+
+.pool-section.active {
+    display: block;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+/* FORM */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}

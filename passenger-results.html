@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Available Rides | RideTogether</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Available Rides</h1>
+    <p>Select a ride that matches your journey</p>
+</header>
+
+<main>
+    <div class="grid" id="resultsGrid"></div>
+</main>
+
+<script>
+/* =========================
+   LOAD SEARCH RESULTS
+========================= */
+
+const results = JSON.parse(localStorage.getItem("searchResults")) || [];
+const grid = document.getElementById("resultsGrid");
+
+if (results.length === 0) {
+    grid.innerHTML = "<p>No rides found for your search.</p>";
+}
+
+/* =========================
+   RENDER RESULTS
+========================= */
+
+results.forEach((ride, index) => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    let routeHTML = "";
+
+    // BIKE: INTRA-CITY
+    if (ride.type === "bike") {
+        routeHTML = `
+            <p><strong>City:</strong> ${ride.city}</p>
+            <p><strong>From:</strong> ${ride.from}</p>
+            <p><strong>To:</strong> ${ride.to}</p>
+        `;
+    }
+
+    // CAR: INTER-CITY
+    if (ride.type === "car") {
+        routeHTML = `
+            <p><strong>From City:</strong> ${ride.from}</p>
+            <p><strong>To City:</strong> ${ride.to}</p>
+        `;
+    }
+
+    card.innerHTML = `
+        <h2>
+            ${ride.type === "bike" ? "🏍 Bike Ride" : "🚗 Car Ride"}
+        </h2>
+
+        ${routeHTML}
+
+        <p><strong>Date:</strong> ${ride.date}</p>
+        <p><strong>Vehicle:</strong> ${ride.vehicle || "Bike"}</p>
+        <p><strong>Seats Available:</strong> ${ride.seats}</p>
+
+        <button onclick="viewRide(${index})">View Details</button>
+    `;
+
+    grid.appendChild(card);
+});
+
+/* =========================
+   VIEW DETAILS
+========================= */
+function viewRide(index) {
+    localStorage.setItem("selectedRide", JSON.stringify(results[index]));
+    window.location.href = "ride-details.html";
+}
+</script>
+
+</body>
+</html>
